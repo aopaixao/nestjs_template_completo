@@ -1,0 +1,12 @@
+version: "3"
+
+services: 
+  nest_docker_template:
+    container_name: nest_docker_template
+    build: .
+    command: npm run start:dev
+    ports: 
+      - "3000:3000"
+    volumes: 
+      - .:/opt/docker_files/nest_docker_template
+      - /opt/docker_files/nest_docker_template/node_modules
