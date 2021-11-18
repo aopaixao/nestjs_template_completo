@@ -1,11 +1,14 @@
-FROM node
+FROM node:14.18.1-slim
 
-WORKDIR /opt/docker_files/voltz_pixqrcodeestatico
+WORKDIR /opt/docker_files/pix_cliente_rabbitmq
 
 RUN /bin/sh -c "apt-get install bash"
 
+RUN apt-get update && apt-get install -y procps
+
 COPY package*.json ./
-RUN npm install -g npm && npm install
+RUN npm install -g npm@7.5.6
+RUN npm install
 RUN npm i -g @nestjs/cli
 
 COPY . .
